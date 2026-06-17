@@ -1,6 +1,6 @@
 {
   "name": "zxcboard",
-  "version": "3.10.0",
+  "version": "1.0.0",
   "description": "zxcboard dashboard for Mihomo and sing-box",
   "license": "MIT",
   "type": "module",
