@@ -2,6 +2,13 @@
 
 # Changelog
 
+## [1.1.0](https://github.com/ang3el7z/zxcboard/compare/v1.0.0...v1.1.0) (2026-06-17)
+
+
+### Features
+
+* improve availability UI and dashboard update entry ([43998b8](https://github.com/ang3el7z/zxcboard/commit/43998b82ef97b06e81dd61d44688d6661113d75f))
+
 ## [3.10.0](https://github.com/Zephyruso/zashboard/compare/v3.9.0...v3.10.0) (2026-06-16)
 
 
