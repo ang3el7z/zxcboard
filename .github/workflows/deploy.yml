@@ -22,7 +22,7 @@ jobs:
         id: release
         uses: googleapis/release-please-action@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
           release-type: node
           target-branch: main
 
@@ -61,7 +61,7 @@ jobs:
       - name: Deploy 🚀
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT }}
           publish_dir: ./dist
           publish_branch: gh-pages${{ matrix.font.suffix }}${{ matrix.singbox.suffix }}
           force_orphan: true
@@ -123,7 +123,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.PAT }}
 
       - name: build and publish ghcr.io docker image
         uses: docker/build-push-action@v7
