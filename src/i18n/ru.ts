@@ -226,6 +226,8 @@ const ru: LANG_MESSAGE = {
   connectionDetails: 'Детали подключения',
   customTheme: 'Пользовательская тема',
   unavailableProxy: 'Скрыть недоступное',
+  available: 'Доступен',
+  unavailable: 'Недоступен',
   protocolTips:
     'Вы пытаетесь подключиться к HTTP-бэкенду, но zxcboard открыт по HTTPS. Это может вызвать ошибки подключения. Разрешите небезопасный контент в браузере или откройте zxcboard по HTTP.',
   global: 'Глобальный',
@@ -265,6 +267,7 @@ const ru: LANG_MESSAGE = {
   autoIPCheckWhenStart: 'Автоматическая проверка IP при запуске',
   autoConnectionCheckWhenStart: 'Автоматическая проверка соединений при запуске',
   latencyServices: 'Сервисы задержки',
+  serviceAvailability: 'Доступность сервисов',
   networkInfo: 'Информация о сети',
   autoSwitchTheme: 'Автоматический темы',
   customBackgroundURL: 'URL фона',
@@ -331,6 +334,9 @@ const ru: LANG_MESSAGE = {
   displayGlobalByMode: 'Отображать GLOBAL по режиму',
   displaySelectedNode: 'Отображать выбранный узел',
   displayLatencyNumber: 'Отображать задержку',
+  showPing: 'Показать пинг',
+  hidePing: 'Скрыть пинг',
+  checkingStatus: 'Проверка',
   disconnectOnRuleDisable: 'Разрывать соединения при отключении правила',
   tipForFixed:
     'Текущая стратегическая группа закреплена за текущим узлом. Нажмите «Тест скорости», чтобы восстановить поведение {type}.',

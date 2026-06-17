@@ -53,7 +53,7 @@
         class="setting-item"
       >
         <div class="setting-item-label">
-          {{ $t('latencyServices') }}
+          {{ $t('serviceAvailability') }}
           <template v-if="enabledLatencyServices.length">
             ({{ enabledLatencyServices.length }})
           </template>
@@ -67,7 +67,7 @@
       </div>
       <DialogWrapper
         v-model="isLatencyServicesDialogOpen"
-        :title="$t('latencyServices')"
+        :title="$t('serviceAvailability')"
       >
         <div class="flex max-h-[70vh] flex-col gap-3 overflow-y-auto text-sm">
           <div class="setting-item-label">

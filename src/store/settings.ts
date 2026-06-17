@@ -182,8 +182,6 @@ export const defaultLatencyServices: LatencyServiceKey[] = [
   'cloudflare',
   'youtube',
   'github',
-  'instagram',
-  'steam',
   'discord',
   'telegram',
 ]

@@ -20,3 +20,9 @@ export const latencyMap = ref<Record<LatencyServiceKey, string>>(
     Object.keys(LATENCY_SERVICE_CONFIG).map((key) => [key, '']),
   ) as Record<LatencyServiceKey, string>,
 )
+
+export const latencyStatusMap = ref<Record<LatencyServiceKey, 'idle' | 'checking' | 'available' | 'unavailable'>>(
+  Object.fromEntries(
+    Object.keys(LATENCY_SERVICE_CONFIG).map((key) => [key, 'idle']),
+  ) as Record<LatencyServiceKey, 'idle' | 'checking' | 'available' | 'unavailable'>,
+)

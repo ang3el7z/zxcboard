@@ -1,52 +1,35 @@
 export const LATENCY_SERVICES = [
-  { key: 'google', label: 'Google', url: 'https://www.google.com/favicon.ico' },
-  { key: 'cloudflare', label: 'Cloudflare', url: 'https://www.cloudflare.com/favicon.ico' },
-  { key: 'youtube', label: 'YouTube', url: 'https://yt3.ggpht.com/favicon.ico' },
-  { key: 'github', label: 'GitHub', url: 'https://github.githubassets.com/favicon.ico' },
-  { key: 'instagram', label: 'Instagram', url: 'https://static.cdninstagram.com/rsrc.php/y4/r/QaBlI0OZiks.ico' },
-  { key: 'steam', label: 'Steam', url: 'https://store.cloudflare.steamstatic.com/public/shared/images/responsive/share_steam_logo.png' },
-  { key: 'discord', label: 'Discord', url: 'https://cdn.discordapp.com/embed/avatars/0.png' },
-  { key: 'telegram', label: 'Telegram', url: 'https://telegram.org/img/website_icon.svg' },
-  { key: 'twitch', label: 'Twitch', url: 'https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png' },
-  { key: 'faceit', label: 'Faceit', url: 'https://cdn-frontend.faceit-cdn.net/web/assets/favicon.ico' },
-  { key: 'meta', label: 'Meta', url: 'https://static.xx.fbcdn.net/rsrc.php/yD/r/d4ZIVX-5C-b.ico' },
-  { key: 'whatsapp', label: 'WhatsApp', url: 'https://static.whatsapp.net/rsrc.php/yZ/r/JvsnINJ2CZv.svg' },
-  { key: 'reddit', label: 'Reddit', url: 'https://www.redditstatic.com/shreddit/assets/favicon/64x64.png' },
-  { key: 'x', label: 'X', url: 'https://abs.twimg.com/favicons/twitter.3.ico' },
-  { key: 'tiktok', label: 'TikTok', url: 'https://www.tiktok.com/favicon.ico' },
-  { key: 'netflix', label: 'Netflix', url: 'https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.ico' },
-  { key: 'spotify', label: 'Spotify', url: 'https://open.spotifycdn.com/cdn/images/favicon32.b64ecc03.png' },
-  { key: 'amazon', label: 'Amazon', url: 'https://www.amazon.com/favicon.ico' },
-  { key: 'aliexpress', label: 'AliExpress', url: 'https://ae01.alicdn.com/kf/S4f8f1b1b4d7f4f54a42ff3eb2f0f0b66Q.png' },
-  { key: 'epicgames', label: 'Epic Games', url: 'https://static-assets-prod.epicgames.com/epic-store/static/favicon.ico' },
-  { key: 'battle', label: 'Battle.net', url: 'https://www.battle.net/favicon.ico' },
-  { key: 'openai', label: 'OpenAI', url: 'https://chatgpt.com/favicon.ico' },
-  { key: 'microsoft', label: 'Microsoft', url: 'https://www.microsoft.com/favicon.ico' },
-  { key: 'apple', label: 'Apple', url: 'https://www.apple.com/favicon.ico' },
-  { key: 'playstation', label: 'PlayStation', url: 'https://www.playstation.com/favicon.ico' },
-  { key: 'xbox', label: 'Xbox', url: 'https://www.xbox.com/favicon.ico' },
-  { key: 'zoom', label: 'Zoom', url: 'https://st1.zoom.us/zoom.ico' },
-  { key: 'pinterest', label: 'Pinterest', url: 'https://s.pinimg.com/webapp/favicon-16x16.png' },
-  { key: 'linkedin', label: 'LinkedIn', url: 'https://static.licdn.com/aero-v1/sc/h/8s162nmbcnfkg7a0k8nq9wwqo' },
-  { key: 'wikipedia', label: 'Wikipedia', url: 'https://www.wikipedia.org/static/favicon/wikipedia.ico' },
-  { key: 'yandex', label: 'Yandex', url: 'https://yandex.ru/favicon.ico' },
-  { key: 'dzen', label: 'Dzen', url: 'https://dzen.ru/favicon.ico' },
-  { key: 'vk', label: 'VK', url: 'https://vk.com/images/icons/favicons/fav_logo.ico' },
-  { key: 'ok', label: 'OK', url: 'https://ok.ru/favicon.ico' },
-  { key: 'mailru', label: 'Mail.ru', url: 'https://mail.ru/favicon.ico' },
-  { key: 'rutube', label: 'RuTube', url: 'https://rutube.ru/favicon.ico' },
-  { key: 'kinopoisk', label: 'Kinopoisk', url: 'https://www.kinopoisk.ru/favicon.ico' },
-  { key: 'yandexmusic', label: 'Yandex Music', url: 'https://music.yandex.ru/favicon.ico' },
-  { key: 'ozon', label: 'Ozon', url: 'https://www.ozon.ru/favicon.ico' },
-  { key: 'wildberries', label: 'Wildberries', url: 'https://www.wildberries.ru/favicon.ico' },
-  { key: 'avito', label: 'Avito', url: 'https://www.avito.ru/favicon.ico' },
-  { key: 'gosuslugi', label: 'Gosuslugi', url: 'https://www.gosuslugi.ru/favicon.ico' },
-  { key: 'sber', label: 'Sber', url: 'https://www.sberbank.ru/favicon.ico' },
-  { key: 'tbank', label: 'T-Bank', url: 'https://www.tbank.ru/favicon.ico' },
-  { key: 'rbc', label: 'RBC', url: 'https://www.rbc.ru/favicon.ico' },
-  { key: 'lenta', label: 'Lenta', url: 'https://lenta.ru/favicon.ico' },
-  { key: 'ria', label: 'RIA', url: 'https://ria.ru/favicon.ico' },
-  { key: 'yapogoda', label: 'Yandex Weather', url: 'https://yandex.ru/pogoda/favicon.ico' },
+  { key: 'google', label: 'Google', url: 'https://www.google.com/favicon.ico', method: 'fetch' },
+  { key: 'cloudflare', label: 'Cloudflare', url: 'https://www.cloudflare.com/favicon.ico', method: 'fetch' },
+  { key: 'youtube', label: 'YouTube', url: 'https://www.youtube.com/favicon.ico', method: 'fetch' },
+  { key: 'github', label: 'GitHub', url: 'https://github.com/favicon.ico', method: 'fetch' },
+  { key: 'instagram', label: 'Instagram', url: 'https://www.instagram.com/favicon.ico', method: 'fetch' },
+  { key: 'steam', label: 'Steam', url: 'https://store.steampowered.com/favicon.ico', method: 'fetch' },
+  { key: 'discord', label: 'Discord', url: 'https://discord.com/app', method: 'fetch' },
+  { key: 'discordvoice', label: 'Discord Voice (est.)', url: 'https://status.discord.com/api/v2/status.json', method: 'fetch' },
+  { key: 'telegram', label: 'Telegram', url: 'https://web.telegram.org/', method: 'fetch' },
+  { key: 'twitch', label: 'Twitch', url: 'https://www.twitch.tv/favicon.ico', method: 'fetch' },
+  { key: 'faceit', label: 'Faceit', url: 'https://www.faceit.com/favicon.ico', method: 'fetch' },
+  { key: 'meta', label: 'Meta', url: 'https://www.meta.com/favicon.ico', method: 'fetch' },
+  { key: 'whatsapp', label: 'WhatsApp', url: 'https://www.whatsapp.com/favicon.ico', method: 'fetch' },
+  { key: 'reddit', label: 'Reddit', url: 'https://www.reddit.com/favicon.ico', method: 'fetch' },
+  { key: 'x', label: 'X', url: 'https://x.com/favicon.ico', method: 'fetch' },
+  { key: 'tiktok', label: 'TikTok', url: 'https://www.tiktok.com/favicon.ico', method: 'fetch' },
+  { key: 'netflix', label: 'Netflix', url: 'https://www.netflix.com/favicon.ico', method: 'fetch' },
+  { key: 'spotify', label: 'Spotify', url: 'https://open.spotify.com/favicon.ico', method: 'fetch' },
+  { key: 'amazon', label: 'Amazon', url: 'https://www.amazon.com/favicon.ico', method: 'fetch' },
+  { key: 'aliexpress', label: 'AliExpress', url: 'https://www.aliexpress.com/favicon.ico', method: 'fetch' },
+  { key: 'epicgames', label: 'Epic Games', url: 'https://www.epicgames.com/favicon.ico', method: 'fetch' },
+  { key: 'battle', label: 'Battle.net', url: 'https://www.battle.net/favicon.ico', method: 'fetch' },
+  { key: 'openai', label: 'OpenAI', url: 'https://chatgpt.com/favicon.ico', method: 'fetch' },
+  { key: 'microsoft', label: 'Microsoft', url: 'https://www.microsoft.com/favicon.ico', method: 'fetch' },
+  { key: 'apple', label: 'Apple', url: 'https://www.apple.com/favicon.ico', method: 'fetch' },
+  { key: 'playstation', label: 'PlayStation', url: 'https://www.playstation.com/favicon.ico', method: 'fetch' },
+  { key: 'xbox', label: 'Xbox', url: 'https://www.xbox.com/favicon.ico', method: 'fetch' },
+  { key: 'zoom', label: 'Zoom', url: 'https://zoom.us/favicon.ico', method: 'fetch' },
+  { key: 'pinterest', label: 'Pinterest', url: 'https://www.pinterest.com/favicon.ico', method: 'fetch' },
+  { key: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/favicon.ico', method: 'fetch' },
+  { key: 'wikipedia', label: 'Wikipedia', url: 'https://www.wikipedia.org/static/favicon/wikipedia.ico', method: 'fetch' },
 ] as const
 
 export type LatencyService = (typeof LATENCY_SERVICES)[number]
@@ -58,28 +41,69 @@ export const LATENCY_SERVICE_CONFIG: Record<LatencyServiceKey, LatencyService> =
     LatencyService
   >
 
-const getLatencyFromUrlAPI = (url: string) => {
-  return new Promise<number>((resolve) => {
+export type LatencyCheckResult = {
+  available: boolean
+  latency: number | null
+}
+
+const checkImageAvailability = (url: string, timeout: number) => {
+  return new Promise<LatencyCheckResult>((resolve) => {
     const startTime = performance.now()
     const img = document.createElement('img')
+    const timer = window.setTimeout(() => {
+      img.remove()
+      resolve({ available: false, latency: null })
+    }, timeout)
     img.src = url + '?_=' + new Date().getTime()
     img.style.display = 'none'
     img.onload = () => {
+      clearTimeout(timer)
       const endTime = performance.now()
       img.remove()
 
-      resolve(endTime - startTime)
+      resolve({ available: true, latency: endTime - startTime })
     }
     img.onerror = () => {
+      clearTimeout(timer)
       img.remove()
 
-      resolve(0)
+      resolve({ available: false, latency: null })
     }
 
     document.body.appendChild(img)
   })
 }
 
+const checkFetchAvailability = async (url: string, timeout: number): Promise<LatencyCheckResult> => {
+  const startTime = performance.now()
+  const controller = new AbortController()
+  const timer = window.setTimeout(() => controller.abort(), timeout)
+
+  try {
+    await fetch(url, {
+      method: 'HEAD',
+      mode: 'no-cors',
+      cache: 'no-store',
+      signal: controller.signal,
+    })
+
+    return {
+      available: true,
+      latency: performance.now() - startTime,
+    }
+  } catch {
+    return checkImageAvailability(url, timeout)
+  } finally {
+    clearTimeout(timer)
+  }
+}
+
 export const getLatencyByServiceAPI = (service: LatencyServiceKey) => {
-  return getLatencyFromUrlAPI(LATENCY_SERVICE_CONFIG[service].url)
+  const target = LATENCY_SERVICE_CONFIG[service]
+
+  if (target.method === 'fetch') {
+    return checkFetchAvailability(target.url, 8000)
+  }
+
+  return checkImageAvailability(target.url, 8000)
 }

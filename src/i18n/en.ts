@@ -224,6 +224,8 @@ const en = {
   connectionDetails: 'Connection details',
   customTheme: 'Custom theme',
   unavailableProxy: 'Hide unavailable proxies',
+  available: 'Available',
+  unavailable: 'Unavailable',
   protocolTips:
     'You are trying to connect to an HTTP backend, but zxcboard is provided via HTTPS. This may cause connection errors. Please allow insecure content in your browser settings or open zxcboard over HTTP instead.',
   global: 'Global',
@@ -263,6 +265,7 @@ const en = {
   autoIPCheckWhenStart: 'Auto-check IP on startup',
   autoConnectionCheckWhenStart: 'Auto-check connections on startup',
   latencyServices: 'Latency services',
+  serviceAvailability: 'Service availability',
   networkInfo: 'Network info',
   autoSwitchTheme: 'Auto-switch theme',
   customBackgroundURL: 'Background',
@@ -329,6 +332,9 @@ const en = {
   displayGlobalByMode: 'Show GLOBAL based on mode',
   displaySelectedNode: 'Show selected node',
   displayLatencyNumber: 'Show latency numbers',
+  showPing: 'Show ping',
+  hidePing: 'Hide ping',
+  checkingStatus: 'Checking',
   disconnectOnRuleDisable: 'Disconnect matching connections when a rule is disabled',
   tipForFixed:
     'The current policy group is locked to the current node. Run a speed test to restore {type} behavior.',
