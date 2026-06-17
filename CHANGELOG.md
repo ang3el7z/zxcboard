@@ -2,6 +2,18 @@
 
 # Changelog
 
+## 1.0.0 (2026-06-17)
+
+
+### Features
+
+* align publish flow with upstream release setup ([8438efb](https://github.com/ang3el7z/zxcboard/commit/8438efb6a2bdbf9170ddf4698ab49e4b978e4282))
+* refine service availability checks ([6f836ee](https://github.com/ang3el7z/zxcboard/commit/6f836ee33b30a1766ab947e9d4cd22483acb0442))
+* refresh publish pipeline and availability UI ([b64d080](https://github.com/ang3el7z/zxcboard/commit/b64d080d807fe79b2ae89c54202078b19a75859f))
+* retry release pipeline with updated permissions ([7e898db](https://github.com/ang3el7z/zxcboard/commit/7e898db4233064e53cb9f3ff341320615f8e6e54))
+* update service availability and publish flow ([90d8418](https://github.com/ang3el7z/zxcboard/commit/90d8418b8b4de8c2ed5bbf1be59cc272c4a9748b))
+* zxcboard initial publish ([4cd054a](https://github.com/ang3el7z/zxcboard/commit/4cd054ac9d474bae6355646816ab0dd834de4c90))
+
 ## [3.10.0](https://github.com/Zephyruso/zashboard/compare/v3.9.0...v3.10.0) (2026-06-16)
 
 
