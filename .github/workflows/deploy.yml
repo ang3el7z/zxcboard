@@ -31,7 +31,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # Each font variant is published to its own gh-pages branch.
         font:
           - { key: all, suffix: '' }
           - { key: cdn, suffix: '-cdn-fonts' }
@@ -40,14 +39,9 @@ jobs:
           - { key: pingfang, suffix: '-pingfang-only' }
           - { key: sarasa, suffix: '-sarasa-only' }
           - { key: none, suffix: '-no-fonts' }
-        # ... crossed with the sing-box native API dimension. The default
-        # (no-suffix) build drops it; the -singbox-native variant includes it.
         singbox:
           - { enable: 'false', suffix: '' }
           - { enable: 'true', suffix: '-singbox-native' }
-        # The production root `gh-pages` branch is an exception: it always ships
-        # the full build (all fonts + sing-box native, see the env below), so the
-        # separate all-fonts `-singbox-native` branch would be redundant.
         exclude:
           - font: { key: all, suffix: '' }
             singbox: { enable: 'true', suffix: '-singbox-native' }
@@ -59,7 +53,6 @@ jobs:
       - name: Install and Build 🔧
         env:
           FONT: ${{ matrix.font.key }}
-          # Force sing-box native ON for the full-font root build (-> gh-pages).
           SINGBOX_NATIVE: ${{ matrix.font.key == 'all' || matrix.singbox.enable }}
         run: |
           pnpm i
@@ -88,8 +81,6 @@ jobs:
           - { key: pingfang, suffix: '-pingfang-only' }
           - { key: sarasa, suffix: '-sarasa-only' }
           - { key: none, suffix: '-no-fonts' }
-        # The default (no-suffix) build drops the sing-box native API; the
-        # -singbox variant includes it.
         singbox:
           - { enable: 'false', suffix: '' }
           - { enable: 'true', suffix: '-singbox-native' }
