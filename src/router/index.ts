@@ -1,0 +1,164 @@
+import { capabilities } from '@/composables/backendCapability'
+import { ROUTE_NAME } from '@/constant'
+import { renderRoutes } from '@/helper'
+import { i18n } from '@/i18n'
+import { splitOverviewPage } from '@/store/settings'
+import { language } from '@/store/settings'
+import { activeBackend } from '@/store/setup'
+import ConnectionsPage from '@/views/ConnectionsPage.vue'
+import HomePage from '@/views/HomePage.vue'
+import LogsPage from '@/views/LogsPage.vue'
+import OverviewPage from '@/views/OverviewPage.vue'
+import ProxiesPage from '@/views/ProxiesPage.vue'
+import RulesPage from '@/views/RulesPage.vue'
+import SettingsPage from '@/views/SettingsPage.vue'
+import SetupPage from '@/views/SetupPage.vue'
+import { useTitle } from '@vueuse/core'
+import { watch } from 'vue'
+import { createRouter, createWebHashHistory } from 'vue-router'
+
+const getDefaultRoute = () => renderRoutes.value[0] || ROUTE_NAME.overview
+const isRouteDirectlyAccessible = (name: string | symbol | undefined) => {
+  if (typeof name !== 'string') return false
+
+  return (
+    name === ROUTE_NAME.settings ||
+    name === ROUTE_NAME.setup ||
+    renderRoutes.value.includes(name as ROUTE_NAME)
+  )
+}
+
+const childrenRouter = [
+  {
+    path: 'proxies',
+    name: ROUTE_NAME.proxies,
+    component: ProxiesPage,
+  },
+  {
+    path: 'overview',
+    name: ROUTE_NAME.overview,
+    component: OverviewPage,
+  },
+  {
+    path: 'connections',
+    name: ROUTE_NAME.connections,
+    component: ConnectionsPage,
+  },
+  {
+    path: 'logs',
+    name: ROUTE_NAME.logs,
+    component: LogsPage,
+  },
+  {
+    path: 'rules',
+    name: ROUTE_NAME.rules,
+    component: RulesPage,
+  },
+  // The Tools page pulls in the sing-box native API client, xterm and qrcode.
+  // Lazy-import it behind the build flag so it is dropped entirely when the
+  // native API support is disabled at build time.
+  ...(__SINGBOX_NATIVE__
+    ? [
+        {
+          path: 'tools',
+          name: ROUTE_NAME.tools,
+          component: () => import('@/views/ToolsPage.vue'),
+        },
+      ]
+    : []),
+  {
+    path: 'settings',
+    name: ROUTE_NAME.settings,
+    component: SettingsPage,
+  },
+]
+
+// Routes that require a specific channel capability to be visitable.
+const ROUTE_CAPABILITY: Partial<Record<string, keyof typeof capabilities.value>> = {
+  [ROUTE_NAME.rules]: 'rules',
+  [ROUTE_NAME.tools]: 'tools',
+}
+
+const router = createRouter({
+  history: createWebHashHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      redirect: () => getDefaultRoute(),
+      component: HomePage,
+      children: childrenRouter,
+    },
+    {
+      path: '/setup',
+      name: ROUTE_NAME.setup,
+      component: SetupPage,
+    },
+    {
+      path: '/:catchAll(.*)',
+      redirect: () => getDefaultRoute(),
+    },
+  ],
+})
+
+const title = useTitle('zxcboard')
+const setTitleByName = (name: string | symbol | undefined) => {
+  if (typeof name === 'string' && activeBackend.value) {
+    const backend = activeBackend.value
+    const prefix = backend.label || `${backend.host}:${backend.port}`
+    title.value = `${prefix} | ${i18n.global.t(name)}`
+  } else {
+    title.value = 'zxcboard'
+  }
+}
+
+router.beforeEach((to, from) => {
+  const toIndex = renderRoutes.value.findIndex((item) => item === to.name)
+  const fromIndex = renderRoutes.value.findIndex((item) => item === from.name)
+
+  if (toIndex === 0 && fromIndex === renderRoutes.value.length - 1) {
+    to.meta.transition = 'slide-left'
+  } else if (toIndex === renderRoutes.value.length - 1 && fromIndex === 0) {
+    to.meta.transition = 'slide-right'
+  } else if (toIndex !== fromIndex) {
+    to.meta.transition = toIndex < fromIndex ? 'slide-right' : 'slide-left'
+  }
+
+  if (!activeBackend.value && to.name !== ROUTE_NAME.setup) {
+    router.push({ name: ROUTE_NAME.setup })
+    return
+  }
+
+  if (!isRouteDirectlyAccessible(to.name)) {
+    router.push({ name: getDefaultRoute() })
+    return
+  }
+
+  // Block navigation to a page the active backend's channels can't serve.
+  const requiredCap = typeof to.name === 'string' ? ROUTE_CAPABILITY[to.name] : undefined
+  if (requiredCap && !capabilities.value[requiredCap]) {
+    router.push({ name: getDefaultRoute() })
+  }
+})
+
+router.afterEach((to) => {
+  setTitleByName(to.name)
+})
+
+watch([language, activeBackend], () => {
+  setTimeout(() => {
+    setTitleByName(router.currentRoute.value.name)
+  })
+})
+
+watch(capabilities, (currentCapabilities) => {
+  const routeName = router.currentRoute.value.name
+  const requiredCap = typeof routeName === 'string' ? ROUTE_CAPABILITY[routeName] : undefined
+  if (requiredCap && !currentCapabilities[requiredCap]) {
+    router.push({ name: getDefaultRoute() })
+  }
+  if (!isRouteDirectlyAccessible(routeName)) {
+    router.push({ name: getDefaultRoute() })
+  }
+})
+
+export default router
