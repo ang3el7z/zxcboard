@@ -26,6 +26,14 @@
           </span>
         </a>
       </div>
+      <button
+        v-if="isUIUpdateAvailable"
+        :class="['btn btn-ghost btn-xs btn-circle', isUIUpgrading ? 'animate-pulse' : '']"
+        :title="$t('upgradeDashboard')"
+        @click="handlerClickUpgradeUI"
+      >
+        <ArrowPathIcon class="h-4 w-4" />
+      </button>
     </div>
 
     <StyleSettings />
@@ -34,12 +42,32 @@
 </template>
 
 <script setup lang="ts">
-import { zxcboardVersion } from '@/api'
+import { upgradeUIAPI, zxcboardVersion } from '@/api'
 import { useSettings } from '@/composables/settings'
+import { handlerUpgradeSuccess } from '@/helper'
+import { ArrowPathIcon } from '@heroicons/vue/24/outline'
+import { ref } from 'vue'
 import GeneralSettings from './GeneralSettings.vue'
 import StyleSettings from './StyleSettings.vue'
 
 const commitId = __COMMIT_ID__
 
 const { isUIUpdateAvailable } = useSettings()
+const isUIUpgrading = ref(false)
+
+const handlerClickUpgradeUI = async () => {
+  if (isUIUpgrading.value) return
+  isUIUpgrading.value = true
+
+  try {
+    await upgradeUIAPI()
+    isUIUpgrading.value = false
+    handlerUpgradeSuccess()
+    setTimeout(() => {
+      window.location.reload()
+    }, 1000)
+  } catch {
+    isUIUpgrading.value = false
+  }
+}
 </script>
