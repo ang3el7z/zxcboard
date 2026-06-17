@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  packages: write
 
 jobs:
   release-please:
@@ -21,12 +22,11 @@ jobs:
         id: release
         uses: googleapis/release-please-action@v5
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           release-type: node
           target-branch: main
 
   build-and-deploy:
-    needs: release-please
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -68,7 +68,7 @@ jobs:
       - name: Deploy 🚀
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.PAT }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages${{ matrix.font.suffix }}${{ matrix.singbox.suffix }}
           force_orphan: true
@@ -132,7 +132,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.PAT }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: build and publish ghcr.io docker image
         uses: docker/build-push-action@v7
